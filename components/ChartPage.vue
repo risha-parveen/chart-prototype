@@ -2,11 +2,15 @@
   <div class="container">
     <div class="chart-container">
       <div class="left-container">
-        
+        <OptionSelector
+        @buttonClicked="buttonClicked"
+        ></OptionSelector>
       </div>
       <div class="right-container">
         <div class="chart-js-container">
-          <ChartApex/>
+          <ChartApex
+            :bgcolor="bgcolor"
+          ></ChartApex>
         </div>
       </div>
     </div>
@@ -15,8 +19,21 @@
 
 <script>
 import ChartApex from './ChartApex.vue'
+import OptionSelector from './OptionSelector.vue'
+
 export default {
-  components: { ChartApex }
+  components: { ChartApex, OptionSelector },
+  data(){
+    return {
+      bgcolor:'rgb(176, 189, 176)'
+    }
+  },
+  methods:{
+    buttonClicked(param){
+      this.bgcolor=param
+      console.log(this.bgcolor)
+    }
+  }
 }
 </script>
 
