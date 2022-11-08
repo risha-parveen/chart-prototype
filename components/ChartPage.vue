@@ -2,11 +2,15 @@
   <div class="container">
     <div class="chart-container">
       <div class="left-container">
-        
+        <OptionSelector
+        @buttonClicked="buttonClicked"
+        ></OptionSelector>
       </div>
       <div class="right-container">
         <div class="chart-js-container">
-          <Chartjs/>
+          <Chartjs
+            :bgcolor="bgcolor"
+          ></Chartjs>
         </div>        
       </div>
     </div>
@@ -15,8 +19,21 @@
 
 <script>
 import Chartjs from './Chartjs.vue'
+import OptionSelector from './OptionSelector.vue'
 export default {
+  components: {OptionSelector},
+  data(){
+    return {
+      bgcolor:'rgb(176, 189, 176)'
+    }
+  },
 
+  methods:{
+    buttonClicked(param){
+      this.bgcolor=param
+      console.log(this.bgcolor)
+    }
+  }
 }
 </script>
 
@@ -28,7 +45,7 @@ export default {
   .container {
     height:100vh;
     width:100vw;
-    background-color:rgb(225, 239, 225);
+    background-color:#e1efe1;
   }
 
   .chart-container {
@@ -49,7 +66,7 @@ export default {
 
   .chart-js-container {
     position:relative;
-    top:150px;
+    top:250px;
     height: 90%;
     width:90%;
   }

@@ -1,7 +1,7 @@
 <template>
   <Bar
-    :chart-options="chartOptions"
-    :chart-data="chartData"
+    :chart-options="val.chartOptions"
+    :chart-data="val.chartData"
     :chart-id="chartId"
     :dataset-id-key="datasetIdKey"
     :plugins="plugins"
@@ -47,40 +47,58 @@ export default {
     plugins: {
       type: Object,
       default: () => {}
+    },
+    bgcolor:{
+      type:String,
+      default: ''
+    }
+  },
+  watch:{
+    bgcolor:function(newval,oldval){
+      this.bg=newval
     }
   },
   data() {
     return {
-      chartData: {
-        labels: [ 0,1,2,3,4,5,6,7,8,9,10 ],
-        datasets: [ {
-          data: [40, 20, 12, 70,60,14,32,35,67,19,11],
-          label: 'Frequency',
-        } ]
-      },
-      chartOptions: {
-        responsive: true,
-        plugins:{
-          title: {
-            display: true,
-            text: 'Chart made using vue chartjs'
-          },
+      bg:'#b9b942b0'
+    }
+  },
+  computed:{
+    val(){
+      const data = {
+        chartData: {
+          labels: [ 0,1,2,3,4,5,6,7,8,9,10 ],
+          datasets: [ {
+            data: [40, 20, 12, 70,60,14,32,35,67,19,11],
+            label: 'Frequency',
+            backgroundColor: this.bg
+          } ]
         },
-        scales: {
-          y: {
+        chartOptions: {
+          responsive: true,
+          plugins:{
             title: {
               display: true,
-              text: 'Frequency'
-            }
+              text: 'Chart made using vue chartjs'
+            },
           },
-          x: {
-            title: {
-              display: true,
-              text: 'Values'
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: 'Frequency'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Values'
+              }
             }
           }
-        }
-      },
+        },
+      }
+      return data
     }
   }
 }
