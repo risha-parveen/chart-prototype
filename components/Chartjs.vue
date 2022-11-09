@@ -55,12 +55,12 @@ export default {
   },
   watch:{
     bgcolor:function(newval,oldval){
-      this.bg=newval
+      this.bg=[newval]
     }
   },
   data() {
     return {
-      bg:'#b9b942b0'
+      bg:['rgba(255, 99, 132)','rgba(0, 255, 0)','rgba(255, 99, 132)','rgba(255, 255, 128)']
     }
   },
   computed:{
@@ -71,7 +71,9 @@ export default {
           datasets: [ {
             data: [40, 20, 12, 70,60,14,32,35,67,19,11],
             label: 'Frequency',
-            backgroundColor: this.bg
+            backgroundColor: this.bg,
+            borderRadius:5,
+            opacity:0.5,
           } ]
         },
         chartOptions: {
