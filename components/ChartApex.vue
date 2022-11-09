@@ -1,6 +1,6 @@
 <template>
   <div id="chart">
-    <no-ssr><ApexCharts type="bar" height="500" :options="val.chartOptions" :series="val.series"></ApexCharts></no-ssr>
+    <no-ssr><ApexCharts type="bar" height="500" :options="val.chartOptions" :series="val.series" toolbar></ApexCharts></no-ssr>
   </div>
 </template>
 
@@ -18,15 +18,12 @@ export default {
   },
   data(){
     return {
-      bg:'#00E396'
+      bg:['#00E396','#00ccc0','#a1E396']
     }
   },
   watch:{
     bgcolor:function(newval,oldval){
-      this.bg=newval
-      this.val.chartOptions.colors.pop()
-      this.val.chartOptions.colors[0]=this.bg
-      console.log(this.val)
+      this.bg=[newval]
     }
   },
   computed:{ 
@@ -44,9 +41,20 @@ export default {
             bar: {
               borderRadius: 4,
               horizontal: false,
+              distributed:true,
             }
           },
-          colors:[this.bg],
+          toolbar:{
+            show: true,
+            tools: {
+              download: true,
+              selection: true,
+              zoom: true,
+              zoomin: true,
+              zoomout: true,
+            }
+          },
+          colors:this.bg,
           dataLabels: {
             enabled: false
           },
