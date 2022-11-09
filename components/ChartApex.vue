@@ -1,6 +1,6 @@
 <template>
   <div id="chart">
-    <no-ssr>{{bgcolor}}<ApexCharts type="bar" height="500" :options="val.chartOptions" :series="val.series"></ApexCharts></no-ssr>
+    <no-ssr><ApexCharts type="bar" height="500" :options="val.chartOptions" :series="val.series"></ApexCharts></no-ssr>
   </div>
 </template>
 
