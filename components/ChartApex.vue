@@ -5,7 +5,7 @@
 </template>
 
 <script>
-const ApexCharts = ()=> import('vue-apexcharts')
+const ApexCharts = ()=> import('vue3-apexcharts')
 export default {
   components:{
     ApexCharts
@@ -36,22 +36,25 @@ export default {
           chart: {
             type: 'bar',
             height: 500,
+            animations:{
+              enabled:true,
+              easing: 'easeinout',
+              speed: 800,
+              animateGradually: {
+                  enabled: true,
+                  delay: 150
+              },
+              dynamicAnimation: {
+                  enabled: true,
+                  speed: 350
+              }
+            }
           },
           plotOptions: {
             bar: {
               borderRadius: 4,
               horizontal: false,
               distributed:true,
-            }
-          },
-          toolbar:{
-            show: true,
-            tools: {
-              download: true,
-              selection: true,
-              zoom: true,
-              zoomin: true,
-              zoomout: true,
             }
           },
           colors:this.bg,
